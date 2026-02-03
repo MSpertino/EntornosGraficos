@@ -1,0 +1,15 @@
+<?php
+session_start();
+require_once 'db.php';
+
+if (isset($_POST['check_email'])) {
+  $stmt = $conn->prepare("SELECT id FROM usuarios WHERE email = ?");
+  $stmt->bind_param("s", $_POST['email']);
+  $stmt->execute();
+  $stmt->store_result();
+  echo json_encode(['exists' => $stmt->num_rows > 0]);
+  exit();
+}
+
+$especialidades = $conn->query("SELECT id, nombre FROM especialidad")->fetch_all(MYSQLI_ASSOC);
+?>
