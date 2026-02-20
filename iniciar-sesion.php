@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($result->num_rows > 0) {
       $row = $result->fetch_assoc();
 
-      if ($password === $row['password']) {
+      if (password_verify($password, $row['password'])) {
         $_SESSION['usuario_id'] = $row['id'];
         $_SESSION['usuario_nombre'] = $row['nombre'];
         $_SESSION['usuario_tipo'] = $row['tipo'];
@@ -39,17 +39,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $conn->close();
+$ruta_base = "";
 ?>
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Veterinaria San Antón - Iniciar Sesión</title>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <link href="styles.css" rel="stylesheet">
+  <?php require_once 'shared/head.php'; ?>
 </head>
 
 <body>
@@ -68,12 +65,12 @@ $conn->close();
           <div class="card-body p-5">
 
             <?php if (!empty($error)): ?>
-              <div class="alert alert-danger text-center" role="alert">
-                <i class="fas fa-exclamation-circle mr-2"></i> <?php echo $error; ?>
-              </div>
+                <div class="alert alert-danger text-center" role="alert">
+                  <i class="fas fa-exclamation-circle mr-2"></i> <?php echo $error; ?>
+                </div>
             <?php endif; ?>
 
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+          <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 
               <div class="form-group mb-4">
                 <label for="email" class="font-weight-bold" style="color: #00897b;">Correo electrónico</label>
@@ -128,8 +125,7 @@ $conn->close();
 
   <?php require_once 'shared/footer.php'; ?>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  <?php require_once 'shared/scripts.php'; ?>
 
   <script>
     document.querySelectorAll('.toggle-password').forEach(item => {

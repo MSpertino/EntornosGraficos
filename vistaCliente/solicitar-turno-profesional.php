@@ -1,19 +1,12 @@
-<?php require_once '../shared/logica_solicitar_turno_profesional.php'; ?>
+<?php require_once '../shared/logica_solicitar_turno_profesional.php';
+$ruta_base = "../";
+?>
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solicitar Turno - Por Profesional</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
-    <link href="../styles.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+    <?php require_once '../shared/head.php'; ?>
 </head>
 
 <body>
@@ -220,12 +213,12 @@
                 </div>
                 <div class="modal-footer justify-content-center bg-light">
                     <a href="mis-turnos.php" class="btn btn-primary px-4">Ir a Mis Turnos</a>
-                    <a href="solicitar-turno-profesional.php" class="btn btn-outline-secondary px-4">Nueva Reserva</a>
+                    <a href="solicitar-turno.php" class="btn btn-outline-secondary px-4">Nueva Reserva</a>
                 </div>
             </div>
         </div>
     </div>
-
+    <?php require_once '../shared/scripts.php'; ?>
     <script>
         $(document).ready(function () {
             const diasSemana = { 'Lun': 1, 'Mar': 2, 'Mie': 3, 'Jue': 4, 'Vie': 5, 'Sab': 6, 'Dom': 0 };

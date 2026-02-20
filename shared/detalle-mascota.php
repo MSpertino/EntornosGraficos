@@ -1,15 +1,12 @@
-<?php require_once '../shared/consultas_mascotas.php'; ?>
+<?php require_once '../shared/consultas_mascotas.php';
+$ruta_base = "../";
+?>
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalle de <?php echo htmlspecialchars($mascota_nombre); ?> - San Antón</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
-    <link href="../styles.css" rel="stylesheet">
+    <?php require_once 'head.php'; ?>
 </head>
 
 <body class="bg-light">
@@ -203,10 +200,7 @@
         </div>
     <?php endif; ?>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
+    <?php require_once '../shared/scripts.php'; ?>
 
     <script>
         $(document).ready(function () {
